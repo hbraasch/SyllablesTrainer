@@ -234,6 +234,7 @@ public class ActivityMultiDivTrainer extends Activity {
 			
 			// Setup new state
 			GetRandomQuestion();
+			ClearTestCounter();
 			
 			// Save state
 			SaveState();

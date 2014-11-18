@@ -7,15 +7,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Environment;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -266,6 +270,21 @@ public class clsUtils {
 		} catch (NameNotFoundException e) {
 			// should never happen
 			throw new RuntimeException("Could not get package name: " + e);
+		}
+	}
+	
+	public static void SendLetYourFriendsKnowEmail(Activity objActivity) {
+
+		final Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.setType("text/html");
+		String strSubject = "Check out SyllablesTrainer";
+		intent.putExtra(Intent.EXTRA_SUBJECT, strSubject);
+		String strMessage = "Here is the link: https://play.google.com/store/apps/details?id=com.treeapps.syllablestrainer<br><br>Regards";
+		intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(strMessage));
+		try {
+			objActivity.startActivity(intent);
+		} catch (ActivityNotFoundException ex) {
+			throw ex;
 		}
 	}
 }

@@ -15,6 +15,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -323,9 +324,13 @@ public class ActivityEditor extends ListActivity {
 		final EditText objSyll4EditText = (EditText) textEntryView.findViewById(R.id.add_edit_syll_4);
 
 		objSyll1EditText.setText(objWord.GetSyllable(0), TextView.BufferType.EDITABLE);
+		objSyll1EditText.setInputType(InputType.TYPE_CLASS_TEXT);
 		objSyll2EditText.setText(objWord.GetSyllable(1), TextView.BufferType.EDITABLE);
+		objSyll2EditText.setInputType(InputType.TYPE_CLASS_TEXT);
 		objSyll3EditText.setText(objWord.GetSyllable(2), TextView.BufferType.EDITABLE);
+		objSyll3EditText.setInputType(InputType.TYPE_CLASS_TEXT);
 		objSyll4EditText.setText(objWord.GetSyllable(3), TextView.BufferType.EDITABLE);
+		objSyll4EditText.setInputType(InputType.TYPE_CLASS_TEXT);
 		
 		// Only display as many syllables as per item type
 		if (enumInputDataType == INPUT_DATA_TYPE_SYLLABLES) {

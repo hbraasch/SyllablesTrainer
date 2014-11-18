@@ -144,6 +144,12 @@
     />
     
     <item
+        android:id="@+id/action_let_friends_know"
+        android:title="Let your friends know"
+        android:showAsAction="never"
+    />
+    
+    <item
         android:id="@+id/action_startup_settings"
         android:title="Settings"
         android:showAsAction="never"

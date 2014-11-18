@@ -22,13 +22,49 @@
           ads:adSize="BANNER"/>
 	
 		<RelativeLayout
+	        android:id="@+id/layout_multidiv_test_amount"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" 
+	       	android:layout_below = "@+id/multidiv_trainer_google_ad_view"
+	       	android:layout_marginTop="5dp"
+	       	android:layout_centerHorizontal="true"
+	        android:layout_alignTop="@+id/radio_word_type"
+	        android:background="@drawable/radio_group_border">
+	           
+	           <TextView
+	           android:id="@+id/label_test_amount"
+	           android:layout_width="wrap_content"
+	           android:layout_height="25dp"
+	           android:gravity="center"
+	           android:text="Count: 1"/>
+	
+	           <ImageView
+	               android:id="@+id/clear_image_test_amount"
+	               android:layout_width="25dp"
+	               android:layout_height="25dp"
+	               android:layout_marginLeft="10dp"
+	               android:layout_toRightOf="@+id/label_test_amount"
+	               android:background="@+drawable/ic_action_clear" 
+	               android:scaleType="center"/>  
+	               
+	           <ImageView
+	               android:id="@+id/suggestion_image"
+				   android:layout_width="25dp"
+	               android:layout_height="25dp"
+	               android:layout_marginLeft="10dp"
+	               android:layout_toRightOf="@+id/clear_image_test_amount"
+	               android:background="@+drawable/suggest_icon" 
+	               android:scaleType="center"/>
+        </RelativeLayout>
+		
+		<RelativeLayout
 		    android:id="@+id/layout_prompt"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:background="@drawable/radio_group_border"
 		    android:gravity="center_horizontal"
 		    android:layout_marginTop="5dp"
-		    android:layout_below="@+id/multidiv_trainer_google_ad_view">
+		    android:layout_below="@+id/layout_multidiv_test_amount">
 		    
 		    <RelativeLayout
 		        android:id="@+id/layout_question_answer"
@@ -209,41 +245,7 @@
                 android:text="Divide" />
         </RadioGroup>
 		
-		<RelativeLayout
-	        android:id="@+id/layout_test_amount"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content" 
-	       	android:layout_below = "@+id/radio_test_type"
-	       	android:layout_marginTop="5dp"
-	       	android:layout_centerHorizontal="false"
-	        android:layout_alignTop="@+id/radio_word_type"
-	        android:background="@drawable/radio_group_border">
-	           
-	           <TextView
-	           android:id="@+id/label_test_amount"
-	           android:layout_width="wrap_content"
-	           android:layout_height="25dp"
-	           android:gravity="center"
-	           android:text="Count: 1"/>
-	
-	           <ImageView
-	               android:id="@+id/clear_image_test_amount"
-	               android:layout_width="25dp"
-	               android:layout_height="25dp"
-	               android:layout_marginLeft="10dp"
-	               android:layout_toRightOf="@+id/label_test_amount"
-	               android:background="@+drawable/ic_action_clear" 
-	               android:scaleType="center"/>  
-	               
-	           <ImageView
-	               android:id="@+id/suggestion_image"
-				   android:layout_width="25dp"
-	               android:layout_height="25dp"
-	               android:layout_marginLeft="10dp"
-	               android:layout_toRightOf="@+id/clear_image_test_amount"
-	               android:background="@+drawable/suggest_icon" 
-	               android:scaleType="center"/>
-        </RelativeLayout>
+		
 
 		
 	
