@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.treeapps.syllablestrainer.ActivitySelectTables" >
+
+    <item
+        android:id="@+id/action_table_selector_selection"
+        android:title="Selection..."
+        android:icon="@drawable/ic_action_selection"
+        android:showAsAction="ifRoom">
+        <menu>
+            <item
+		        android:id="@+id/action_table_selector_selection_select_all"
+		        android:title="Select all"
+		        android:showAsAction="ifRoom"
+    		/> 
+    		<item
+		        android:id="@+id/action_table_selector_selection_clear"
+		        android:title="Clear selection"
+		        android:showAsAction="ifRoom"
+    		/>           
+        </menu>
+    </item>
+
+</menu>

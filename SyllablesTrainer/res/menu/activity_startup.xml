@@ -1,0 +1,172 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.treeapps.syllablestrainer.ActivityStartup" >
+
+    <item
+        android:id="@+id/action_startup_edit"
+        android:title="Edit..."
+        android:icon="@drawable/ic_action_edit"
+        android:showAsAction="never">
+        <menu>
+	        <item
+	            android:id="@+id/action_startup_edit_real_words"
+		        android:title="Real words"
+		        android:showAsAction="never|withText"/>
+
+	        <item
+	            android:id="@+id/action_startup_edit_nonsense_words"
+		        android:title="Nonsense words..."
+		        android:showAsAction="never|withText">
+		        <menu>
+			        <item
+		            	android:id="@+id/action_startup_edit_nonsense_words_presylls"
+				        android:title="Pre syllables"
+				        android:showAsAction="never|withText"/>
+		     	    <item
+		            	android:id="@+id/action_startup_edit_nonsense_words_rootsylls"
+				        android:title="Root syllables"
+				        android:showAsAction="never|withText"/>
+			       	<item
+		            	android:id="@+id/action_startup_edit_nonsense_words_postsylls"
+				        android:title="Post syllables"
+				        android:showAsAction="never|withText"/>
+		        </menu>
+	        </item>
+        </menu>
+    </item>
+    
+    <item
+        android:id="@+id/action_startup_import"
+        android:title="Import..."
+        android:showAsAction="never">
+        <menu>
+	        <item
+	            android:id="@+id/action_startup_import_real_words"
+		        android:title="Real words"
+		        android:showAsAction="never|withText"/>
+	        
+	        <item
+	            android:id="@+id/action_startup_import_nonsense_words"
+		        android:title="Nonsense words..."
+		        android:showAsAction="never|withText">
+		        <menu>
+			        <item
+			            android:id="@+id/action_startup_import_presylls"
+				        android:title="Pre syllables"
+				        android:showAsAction="never|withText"/>
+			        
+			        <item
+			            android:id="@+id/action_startup_import_rootsylls"
+				        android:title="Root syllables"
+				        android:showAsAction="never|withText"/>
+			        
+			        <item
+			            android:id="@+id/action_startup_import_postsylls"
+				        android:title="Post syllables"
+				        android:showAsAction="never|withText"/>
+		        </menu>
+	        </item>        
+        </menu>
+    </item>
+    
+    <item
+        android:id="@+id/action_startup_export"
+        android:title="Export..."
+        android:visible="false"
+        android:showAsAction="never">
+        <menu>
+	        <item
+	            android:id="@+id/action_startup_export_real_words"
+		        android:title="Real words"
+		        android:showAsAction="never|withText"/>
+	        <item
+	            android:id="@+id/action_startup_export_nonsense_words"
+		        android:title="Nonsense words..."
+		        android:showAsAction="never|withText">
+		        <menu>
+		             <item
+			            android:id="@+id/action_startup_export_presylls"
+				        android:title="Pre syllables"
+				        android:showAsAction="never|withText"/>
+			        
+			        <item
+			            android:id="@+id/action_startup_export_rootsylls"
+				        android:title="Root syllables"
+				        android:showAsAction="never|withText"/>
+			        
+			        <item
+			            android:id="@+id/action_startup_export_postsylls"
+				        android:title="Post syllables"
+				        android:showAsAction="never|withText"/>
+ 
+		        </menu>
+	        </item>
+	        
+	       
+        </menu>
+    </item>
+    
+    <item
+        android:id="@+id/action_tools"
+        android:title="Tools..."
+        android:showAsAction="never">
+        <menu>
+            <item
+		        android:id="@+id/action_tools_multiplication_trainer"
+		        android:title="Multiplication drill"
+		        android:showAsAction="ifRoom"
+    		/>
+            <item
+		        android:id="@+id/action_tools_divide_trainer"
+		        android:title="Division drill"
+		        android:showAsAction="ifRoom"
+    		/> 
+    	</menu>
+	</item>
+        
+    <item
+        android:id="@+id/action_help"
+        android:title="Help"
+        android:visible="false"
+        android:showAsAction="never"
+    />
+    
+    <item
+        android:id="@+id/action_about"
+        android:showAsAction="never"
+        android:visible="false"
+        android:title="About"/>
+    
+    <item
+        android:id="@+id/action_buy_pro_version"
+        android:title="Buy pro version"
+        android:showAsAction="never"
+    />
+    
+    <item
+        android:id="@+id/action_startup_settings"
+        android:title="Settings"
+        android:showAsAction="never"
+    />
+    
+    <item
+        android:id="@+id/action_developer"
+        android:showAsAction="never"
+		android:orderInCategory="101"
+		android:visible="false"
+        android:title="Developer...">
+	    <menu>
+	        <item
+	        android:id="@+id/action_developer_unpurchase"
+	        android:title="Unpurchase"
+	        android:showAsAction="never"
+	    	/>
+	        <item
+	        android:id="@+id/action_developer_clear_all"
+	        android:title="Clear all"
+	        android:showAsAction="never"
+	    	/>
+	    </menu>
+    </item>  
+    
+</menu>

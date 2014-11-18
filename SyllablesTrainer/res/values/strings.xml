@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SyllablesTrainer</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_activity_editor">Syllables Editor</string>
+    <string name="new_file_prompt">"New file"</string>
+    <string name="title_activity_activity_divide_trainer">Multiply and Divide Driller</string>
+    <string name="url_help">http://treeapps.azurewebsites.net/SyllablesTrainer.aspx</string>
+
+    <color name="black_background">#000000</color>
+    <color name="white_grey">#ffffff</color>
+
+    <string name="title_activity_activity_select_tables">ActivitySelectTables</string>
+    <string name="title_activity_activity_startup_settings">ActivityStartupSettings</string>
+
+</resources>

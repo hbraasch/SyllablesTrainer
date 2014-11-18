@@ -1,0 +1,63 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.treeapps.syllablestrainer.ActivityEditor" >
+
+    
+    <item
+        android:id="@+id/action_editor_new"
+        android:title="New"
+        android:icon="@drawable/ic_action_add"
+        android:showAsAction="ifRoom"
+    />
+ 
+    <item
+        android:id="@+id/action_editor_edit"
+        android:title="Edit"
+        android:icon="@drawable/ic_action_edit"
+        android:showAsAction="ifRoom"
+    />
+ 
+    <item
+        android:id="@+id/action_editor_delete"
+        android:title="Delete"
+        android:icon="@drawable/ic_action_delete"
+        android:showAsAction="ifRoom"
+    />
+    
+    <item
+        android:id="@+id/action_editor_selection"
+        android:title="Selection..."
+        android:icon="@drawable/ic_action_selection"
+        android:showAsAction="ifRoom">
+        <menu>
+            <item
+		        android:id="@+id/action_editor_selection_select_all"
+		        android:title="Select all"
+		        android:showAsAction="ifRoom"
+    		/> 
+    		<item
+		        android:id="@+id/action_editor_selection_clear"
+		        android:title="Clear selection"
+		        android:showAsAction="ifRoom"
+    		/> 
+    		<item
+		        android:id="@+id/action_editor_selection_enable_all"
+		        android:title="Enable all"
+		        android:showAsAction="ifRoom"
+    		/> 
+    		<item
+		        android:id="@+id/action_editor_selection_disable_all"
+		        android:title="Disable all"
+		        android:showAsAction="ifRoom"
+    		/>           
+        </menu>
+    </item>
+    
+    <item
+        android:id="@+id/action_editor_help"
+        android:title="Help"
+        android:icon="@drawable/ic_action_help"
+        android:showAsAction="ifRoom"
+    />
+    
+</menu>

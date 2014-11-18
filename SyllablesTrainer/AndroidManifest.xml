@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.treeapps.syllablestrainer"
+    android:versionCode="6"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".ActivityStartup"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".editor.ActivityEditor"
+            android:label="@string/title_activity_activity_editor"
+            android:parentActivityName=".ActivityStartup" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.treeapps.syllablestrainer.ActivityStartup" />
+        </activity>
+        <activity
+            android:name=".editor.ActivityFileChooser"
+            android:label="Choose File"
+            android:theme="@android:style/Theme.Holo" >
+            <category android:name="android.intent.category.DEFAULT" />
+        </activity>
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+        <activity
+            android:name=".multidivtrainer.ActivityMultiDivTrainer"
+            android:label="@string/title_activity_activity_divide_trainer" >
+        </activity>
+        <activity
+            android:name=".multidivtrainer.ActivitySelectTables"
+            android:label="@string/title_activity_activity_select_tables" >
+        </activity>
+        <activity
+            android:name=".ActivityStartupSettings"
+            android:label="@string/title_activity_activity_startup_settings" >
+        </activity>
+    </application>
+
+</manifest>

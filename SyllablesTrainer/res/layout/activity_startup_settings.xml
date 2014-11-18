@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+   <PreferenceCategory
+            android:title="Help">
+
+        <Preference 
+	      android:key="label_help" 
+	      android:title="Click here to get web help ..."></Preference>
+      
+        
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:title="About">
+         <Preference 
+	      android:key="label_about" 
+	      android:title="SyllablesTrainer"></Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
+
