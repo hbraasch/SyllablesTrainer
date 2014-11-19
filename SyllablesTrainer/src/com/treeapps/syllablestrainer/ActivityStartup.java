@@ -115,7 +115,7 @@ public class ActivityStartup extends Activity {
 	}
 	static final String base64EncodedPublicKeyPart = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjfMlu5NTHfIqk5+gQzSCCubC7r7MBmhktUKpK7Kefa7yxE9FeY/zNvcoe35maC+jrBx4dNkK54gdjoEgr7g7gPm8YH0HJCrHiWnWOqOeI8QoDQHLKv7UVFdPNKWzEZf6ILoaGXirpgyUoiVrTrk1MuMLANFZKIYkO7VJJrj9XdwyqO0ATegysZVCFf9xG01BdP2iWzCpirCu1VKFZ/yLvhd9FrOIS6x3umEZStE4rIv//+zTp7r7MiwIHd5YtU/VzAg7QVlGLbY1P9BuhiSs7wlKJiP7LuJGh1cURif90lWm447nIBBI8kLlGrLnr+D900TiJWxLQlc0MlZkuz+E+QIDAQAB";
 	public static final String TAG_IAB = "IAB";
-	public static final String SKU_UPGRADE_TO_PRO = "android.test.purchased";			 	// treeapps.treenote.upgrade_to_pro;
+	public static final String SKU_UPGRADE_TO_PRO = "treeapps.treenote.upgrade_to_pro";
 																							// OR
 																							// android.test.purchased
 																							// OR
