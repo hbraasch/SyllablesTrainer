@@ -143,9 +143,10 @@ public class ActivityStartup extends Activity {
 	
 	// End of persist
 
-	RetainedFragment objRetainedFragment; // User to persist objects that
+	RetainedFragment objRetainedFragment; // Used to persist objects that
 											// implement interfaces (callback's)
 											// used during orientation changes
+	
 	ImportDataFromCsvFileAsyncTask<clsWord> objImportWordDataFromCsvFileAsyncTask;
 	ImportDataFromCsvFileAsyncTask<clsSyllable> objImportSyllableDataFromCsvFileAsyncTask;
 	
