@@ -236,13 +236,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Multiply" />
+                android:text="\u00D7"
+                android:textSize="35dp"/>
 
             <RadioButton
                 android:id="@+id/radio_test_type_divide"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Divide" />
+                android:text="\u00F7"
+                android:textSize="35dp"/>
+            <RadioButton
+                android:id="@+id/radio_test_type_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\u002B"
+                android:textSize="35dp"/>
+            <RadioButton
+                android:id="@+id/radio_test_type_subtract"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\u2212" 
+                android:textSize="35dp"/>
         </RadioGroup>
 		
 		

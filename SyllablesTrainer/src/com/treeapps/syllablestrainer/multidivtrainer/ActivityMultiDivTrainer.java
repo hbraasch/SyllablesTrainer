@@ -38,7 +38,7 @@ public class ActivityMultiDivTrainer extends Activity {
 	private static final int SELECT_TABLES = 1;
 	
 	public enum enumTestTypes {
-		MULTIPLY, DIVIDE
+		MULTIPLY, DIVIDE, ADD, SUBTRACT
 	}
 	
 	class clsSession {
@@ -50,8 +50,8 @@ public class ActivityMultiDivTrainer extends Activity {
 		public int intTestAmount;
 		public int intCorrectCount;
 		public enumTestTypes enumTestType = enumTestTypes.MULTIPLY;
-		public int intCurrentMultiplyTermLeft;
-		public int intCurrentMultiplyTermRight;
+		public int intCurrentTermLeft;
+		public int intCurrentTermRight;
 	}
 	
 	class clsData {
@@ -149,15 +149,15 @@ public class ActivityMultiDivTrainer extends Activity {
 		RadioButton objTestTypeMultiplyRadioButton = (android.widget.RadioButton) this.findViewById(R.id.radio_test_type_multiply);
 		RadioButton objTestTypeDivideRadioButton = (android.widget.RadioButton) this
 				.findViewById(R.id.radio_test_type_divide);
+		RadioButton objTestTypeAddRadioButton = (android.widget.RadioButton) this
+				.findViewById(R.id.radio_test_type_add);
+		RadioButton objTestTypeSubtractRadioButton = (android.widget.RadioButton) this
+				.findViewById(R.id.radio_test_type_subtract);
 		objTestTypeMultiplyRadioButton.setOnClickListener(new OnClickListener() {
 
 			@Override
-			public void onClick(View v) {
-				if (((RadioButton) v).isChecked()) {
-					objSession.enumTestType = enumTestTypes.MULTIPLY;
-				} else {
-					objSession.enumTestType = enumTestTypes.DIVIDE;
-				}
+			public void onClick(View v) { 
+				objSession.enumTestType = enumTestTypes.MULTIPLY;
 				objSession.intCurrentAnswer = 0;
 				objSession.boolIsAnswerEmpty = true;
 				GetRandomQuestion();
@@ -170,11 +170,33 @@ public class ActivityMultiDivTrainer extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				if (((RadioButton) v).isChecked()) {
-					objSession.enumTestType = enumTestTypes.DIVIDE;
-				} else {
-					objSession.enumTestType = enumTestTypes.MULTIPLY;
-				}
+				objSession.enumTestType = enumTestTypes.DIVIDE;
+				objSession.intCurrentAnswer = 0;
+				objSession.boolIsAnswerEmpty = true;
+				GetRandomQuestion();
+				SaveState();
+				UpdateGui();
+			}
+		});
+		
+		objTestTypeAddRadioButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				objSession.enumTestType = enumTestTypes.ADD;
+				objSession.intCurrentAnswer = 0;
+				objSession.boolIsAnswerEmpty = true;
+				GetRandomQuestion();
+				SaveState();
+				UpdateGui();
+			}
+		});
+		
+		objTestTypeSubtractRadioButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				objSession.enumTestType = enumTestTypes.SUBTRACT;
 				objSession.intCurrentAnswer = 0;
 				objSession.boolIsAnswerEmpty = true;
 				GetRandomQuestion();
@@ -303,12 +325,28 @@ public class ActivityMultiDivTrainer extends Activity {
 		
 		RadioButton objTestTypeMultiplyRadioButton = (android.widget.RadioButton) this.findViewById(R.id.radio_test_type_multiply);
 		RadioButton objTestTypeDivideRadioButton = (android.widget.RadioButton) this.findViewById(R.id.radio_test_type_divide);
+		RadioButton objTestTypeAddRadioButton = (android.widget.RadioButton) this.findViewById(R.id.radio_test_type_add);
+		RadioButton objTestTypeSubtractRadioButton = (android.widget.RadioButton) this.findViewById(R.id.radio_test_type_subtract);
 		if (objSession.enumTestType == enumTestTypes.MULTIPLY) {
 			objTestTypeMultiplyRadioButton.setChecked(true);
 			objTestTypeDivideRadioButton.setChecked(false);
-		} else {
+			objTestTypeAddRadioButton.setChecked(false);
+			objTestTypeSubtractRadioButton.setChecked(false);
+		} else if (objSession.enumTestType == enumTestTypes.DIVIDE){
 			objTestTypeMultiplyRadioButton.setChecked(false);
-			objTestTypeDivideRadioButton.setChecked(true);		
+			objTestTypeDivideRadioButton.setChecked(true);
+			objTestTypeAddRadioButton.setChecked(false);
+			objTestTypeSubtractRadioButton.setChecked(false);		
+		} else if (objSession.enumTestType == enumTestTypes.ADD){
+			objTestTypeMultiplyRadioButton.setChecked(false);
+			objTestTypeDivideRadioButton.setChecked(false);
+			objTestTypeAddRadioButton.setChecked(true);
+			objTestTypeSubtractRadioButton.setChecked(false);		
+		} else if (objSession.enumTestType == enumTestTypes.SUBTRACT){
+			objTestTypeMultiplyRadioButton.setChecked(false);
+			objTestTypeDivideRadioButton.setChecked(false);
+			objTestTypeAddRadioButton.setChecked(false);
+			objTestTypeSubtractRadioButton.setChecked(true);		
 		}
 		
 		UpdateTestCounterDisplay();
@@ -317,23 +355,35 @@ public class ActivityMultiDivTrainer extends Activity {
 
 
 	public String GetQuestionString() {
-		String strQuestion;
+		String strQuestion = "";
 		if (objSession.enumTestType == enumTestTypes.DIVIDE) {
 			strQuestion = objSession.objCurrentQuestionNumerator.intValue + " \u00F7 "
 					+ objSession.objCurrentQuestionDenominator.intValue + " = ";
-		} else {
-			strQuestion = objSession.intCurrentMultiplyTermLeft + " x "
-					+ objSession.intCurrentMultiplyTermRight + " = ";
+		} else if (objSession.enumTestType == enumTestTypes.MULTIPLY) {
+			strQuestion = objSession.intCurrentTermLeft + " \u00D7 "
+					+ objSession.intCurrentTermRight + " = ";
+		} else if (objSession.enumTestType == enumTestTypes.ADD) {
+			strQuestion = objSession.intCurrentTermLeft + " \u002B "
+					+ objSession.intCurrentTermRight + " = ";
+		} else if (objSession.enumTestType == enumTestTypes.SUBTRACT) {
+			strQuestion = objSession.intCurrentTermLeft + " \u2212 "
+					+ objSession.intCurrentTermRight + " = ";
 		}
 		return strQuestion;
 	}
 	
 	public int GetAnswer() {
+		int intAnswer = 0;
 		if (objSession.enumTestType == enumTestTypes.DIVIDE) {
-			return objSession.objCurrentQuestionNumerator.intValue / objSession.objCurrentQuestionDenominator.intValue;
-		} else {
-			return objSession.intCurrentMultiplyTermLeft * objSession.intCurrentMultiplyTermRight;
+			intAnswer = objSession.objCurrentQuestionNumerator.intValue / objSession.objCurrentQuestionDenominator.intValue;
+		} else if (objSession.enumTestType == enumTestTypes.MULTIPLY){
+			intAnswer = objSession.intCurrentTermLeft * objSession.intCurrentTermRight;
+		} else if (objSession.enumTestType == enumTestTypes.ADD){
+			intAnswer = objSession.intCurrentTermLeft + objSession.intCurrentTermRight;
+		} else if (objSession.enumTestType == enumTestTypes.SUBTRACT){
+			intAnswer = objSession.intCurrentTermLeft - objSession.intCurrentTermRight;
 		}
+		return intAnswer;
 	}
 
 	@Override
@@ -629,8 +679,56 @@ public class ActivityMultiDivTrainer extends Activity {
 				intTermRightIndex = 0;
 			}
 			
-			objSession.intCurrentMultiplyTermLeft  = intTermLeftIndex;
-			objSession.intCurrentMultiplyTermRight  = objSession.objData.objEnabledTables.get(intTermRightIndex);
+			objSession.intCurrentTermLeft  = intTermLeftIndex;
+			objSession.intCurrentTermRight  = objSession.objData.objEnabledTables.get(intTermRightIndex);
+			objSession.intCurrentAnswer = 0;
+			objSession.boolIsAnswerEmpty = true;
+		} else if (objSession.enumTestType == enumTestTypes.ADD) {
+			Random r = new Random();
+			// Left term
+			int intMaxVal = 100;
+			int intMinVal = 1;
+			int intTermLeftIndex;
+			intTermLeftIndex = r.nextInt((intMaxVal - intMinVal) + 1) + intMinVal;
+
+			
+			// Right term			
+			intMaxVal = 100 - intTermLeftIndex;
+			intMinVal = 1;
+			int intTermRightIndex;
+			if (intMaxVal != 0) {
+				intTermRightIndex = r.nextInt((intMaxVal - intMinVal) + 1) + intMinVal;
+			} else {
+				intTermRightIndex = 0;
+			}
+			
+			objSession.intCurrentTermLeft  = intTermLeftIndex;
+			objSession.intCurrentTermRight  = intTermRightIndex;
+			objSession.intCurrentAnswer = 0;
+			objSession.boolIsAnswerEmpty = true;
+		} else if (objSession.enumTestType == enumTestTypes.SUBTRACT) {
+			Random r = new Random();
+			// Left term
+			int intMaxVal = 100;
+			int intMinVal = 1;
+			int intTermLeftIndex;
+			intTermLeftIndex = r.nextInt((intMaxVal - intMinVal) + 1) + intMinVal;
+
+			
+			// Right term			
+			intMaxVal = Math.min(intTermLeftIndex, 100 - intTermLeftIndex);
+			intMinVal = 1;
+			int intTermRightIndex;
+			if (intMaxVal != 0) {
+				intTermRightIndex = r.nextInt((intMaxVal - intMinVal) + 1) + intMinVal;
+			} else {
+				intTermRightIndex = 0;
+			}
+			
+			objSession.intCurrentTermLeft  = intTermLeftIndex;
+			objSession.intCurrentTermRight  = intTermRightIndex;
+			objSession.intCurrentAnswer = 0;
+			objSession.boolIsAnswerEmpty = true;
 		}
 		SaveState();
 	}
@@ -656,9 +754,9 @@ public class ActivityMultiDivTrainer extends Activity {
 		clsColoredStringBuilder objColoredStringBuilder = new clsColoredStringBuilder();
 		objColoredStringBuilder.AddSnippetToString("Count: ", Color.BLUE);
 		objColoredStringBuilder.AddSnippetToString(Integer.toString(objSession.intTestAmount), Color.BLACK);
-		objColoredStringBuilder.AddSnippetToString(" Pass: ", Color.BLUE);
+		objColoredStringBuilder.AddSnippetToString("   Pass: ", Color.BLUE);
 		objColoredStringBuilder.AddSnippetToString(Integer.toString(objSession.intCorrectCount), Color.BLUE);
-		objColoredStringBuilder.AddSnippetToString(" Fail: ", Color.BLUE);
+		objColoredStringBuilder.AddSnippetToString("   Fail: ", Color.BLUE);
 		int intFailCount = objSession.intTestAmount - objSession.intCorrectCount;
 		objColoredStringBuilder.AddSnippetToString(Integer.toString(intFailCount),(intFailCount == 0) ? Color.BLACK: Color.RED);
 		objTestAmountTextView.setText(objColoredStringBuilder.GetString());
